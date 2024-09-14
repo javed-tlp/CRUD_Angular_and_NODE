@@ -1,5 +1,6 @@
 <div class="container">
-  <h1 class="page-title">Student List</h1>
+  <h1 class="text-center">Student List</h1>
+
   <table class="table table-bordered student-table">
     <thead>
       <tr>
@@ -9,16 +10,42 @@
         <th scope="col">Age</th>
         <th scope="col">Action</th>
       </tr>
+      <!-- Search Inputs Row -->
+      <tr class="search-row">
+        <td><input
+          type="text"
+          class="form-control search-input"
+          placeholder="Search by ID..."
+          [(ngModel)]="searchQueryId"
+          (input)="onSearch()"
+        /></td>
+        <td><input
+          type="text"
+          class="form-control search-input"
+          placeholder="Search by Name..."
+          [(ngModel)]="searchQueryName"
+          (input)="onSearch()"
+        /></td>
+        <td><input
+          type="text"
+          class="form-control search-input"
+          placeholder="Search by Email..."
+          [(ngModel)]="searchQueryEmail"
+          (input)="onSearch()"
+        /></td>
+        <td></td> <!-- Empty cell to align with columns -->
+        <td></td> <!-- Empty cell to align with columns -->
+      </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of data">
-        <th scope="row">{{item.id}}</th>
-        <td>{{item.Name}}</td>
-        <td>{{item.Email}}</td>
-        <td>{{item.Age}}</td>
+      <tr *ngFor="let student of filteredData">
+        <th scope="row">{{student.id}}</th>
+        <td>{{student.Name}}</td>
+        <td>{{student.Email}}</td>
+        <td>{{student.Age}}</td>
         <td>
-          <button class="btn btn-primary" routerLink="../edit-details/{{item.id}}" (click)="getuserbyID(item.id)">Edit</button>
-          <button class="btn btn-danger" (click)="ondelete(item.id)">Delete</button>
+          <button class="btn btn-primary" routerLink="../edit-details/{{student.id}}" (click)="getuserbyID(student.id)">Edit</button>
+          <button class="btn btn-danger" (click)="ondelete(student.id)">Delete</button>
         </td>
       </tr>
     </tbody>

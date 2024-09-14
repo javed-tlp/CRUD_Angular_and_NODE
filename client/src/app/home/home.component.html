@@ -1,33 +1,13 @@
-
 <div class="container">
-    <router-outlet>
-    <h1>CRUD Application</h1>
+  <h1>CRUD Application</h1>
 
-    <nav class="navbar bg-body-tertiary">
-      <form class="container-fluid justify-content-start">
-        <button class="btn btn-outline-success me-2" routerLink="add-details" type="button">Add Student</button>
-        <button class="btn btn-outline-success me-2" routerLink="get-details" type="button">Student List</button>
-        <button class="btn btn-outline-success me-2" routerLink="../edit-details" type="button">Edit Student</button>
-        
-      </form>
-    </nav>
-    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-danger">
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" routerLink="add-details">Add Student</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="get-details">Student List</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="edit-details">Edit Student</a>
-          </li>
-        </ul>
-
-      </div>
-    </nav> -->
-
-  </router-outlet>
-  </div>
+  <nav class="navbar">
+    <div class="container-fluid">
+      <button class="btn btn-nav" routerLink="add-details" type="button">Add Student</button>
+      <button class="btn btn-nav" routerLink="get-details" type="button">Student List</button>
+      <!-- <button class="btn btn-nav" routerLink="../edit-details" type="button">Edit Student</button> -->
+    </div>
+  </nav>
+  
+  <router-outlet></router-outlet>
+</div>
