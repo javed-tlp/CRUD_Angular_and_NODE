@@ -1,5 +1,27 @@
 <div class="container">
   <h1>CRUD Application</h1>
+
+  <!-- Navbar Component -->
   <app-navbar></app-navbar>
+
+  <!-- Welcome Section -->
+  <section class="welcome-section">
+    <h2>Welcome to the CRUD Application!</h2>
+    <p>Manage student information effortlessly. Use the navigation above to add, view, or edit student details.</p>
+  </section>
+
+  <!-- Theme Toggle Button -->
+  <div class="theme-toggle">
+    <button class="btn-toggle" (click)="toggleTheme()">
+      <i class="fas" [ngClass]="isDarkMode ? 'fa-sun' : 'fa-moon'"></i>
+      {{ isDarkMode ? 'Light Mode' : 'Dark Mode' }}
+    </button>
+  </div>
+
   <router-outlet></router-outlet>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <p>&copy; 2024 CRUD Application. All rights reserved.</p>
+  </footer>
 </div>
