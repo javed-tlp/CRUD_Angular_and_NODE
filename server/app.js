@@ -22,7 +22,7 @@ app.use('/user',router)
 
 
 app.listen(port, ()=>{
-    console.log(`server is live on port ${port}`)
+    console.log(`The server is live on port ${port}`)
     console.log(`http://localhost:${port}`)
 })
 
