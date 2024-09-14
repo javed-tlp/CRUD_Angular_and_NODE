@@ -4,7 +4,7 @@ const model = require("../models/user_model");
 exports.postData = async (req, res) => {
   try {
     const result = await model.postDetail(req.body);
-    res.send({ message: "Data inserted successfully", data:result });
+    res.send({ message: "Data Added successfully", data:result });
   } catch (error) {
     console.log(error);
   }
