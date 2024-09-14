@@ -13,6 +13,7 @@ user.postDetail = (data) => {
       created_at : nowDateTime
     };
     const queryStr = "INSERT INTO users SET ?";
+    console.log("Data Inserted:--", entry_data)
     db.query(queryStr, entry_data, (err, result) => {
       if (err) {
         return reject(err);
@@ -35,6 +36,7 @@ user.getDetails = (data) => {
     });
   });
 };
+
 user.deletedData = (data) => {
   return new Promise((resolve, reject) => {
     const queryStr = "SELECT * FROM users WHERE status = 0 AND id =?";
@@ -52,6 +54,7 @@ user.deletedData = (data) => {
 user.getDetailsbyId = (data) => {
   return new Promise((resolve, reject) => {
     const queryStr = "SELECT * FROM users WHERE id=? AND status =1";
+    console.log("Data:--",data)
     db.query(queryStr, data.id, (err, result) => {
       if (err) {
         return reject(err);
@@ -72,6 +75,8 @@ user.updateDetails = (data) => {
     };
     const queryStr = "UPDATE users SET ? WHERE id=?";
     const filter = [updatedData, data.id];
+    console.log("Updated Data:---",updatedData)
+    console.log("Filter:--",filter)
     db.query(queryStr, filter, (err, result) => {
       if (err) {
         return reject(err);
@@ -85,6 +90,7 @@ user.updateDetails = (data) => {
 user.deleteDetails = (data) => {
   return new Promise((resolve, reject) => {
     const queryStr = "UPDATE users SET status = 0 WHERE id=?";
+    console.log("Data:--",data)
     db.query(queryStr, data.user_id, (err, result) => {
       if (err) {
         return reject(err);
