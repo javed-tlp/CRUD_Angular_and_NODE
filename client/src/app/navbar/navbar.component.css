@@ -1,0 +1,32 @@
+/* Navbar Styling */
+.navbar {
+    background: #ffffff;
+    border-bottom: 2px solid #ff8d00;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+    margin-bottom: 20px;
+  }
+  
+  .container-fluid {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .btn-nav {
+    background: linear-gradient(145deg, #007bff, #0056b3);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    margin: 0 10px;
+    font-size: 14px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .btn-nav:hover {
+    background: linear-gradient(145deg, #0056b3, #003d80);
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
