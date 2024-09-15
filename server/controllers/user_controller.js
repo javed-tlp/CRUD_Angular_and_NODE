@@ -53,3 +53,33 @@ exports.deleteData=async (req,res)=>{
         console.log(error)
     }
 }
+
+exports.uploadFile = async (req, res) => {
+  try {
+    console.log('Upload route triggered');
+    console.log('File info:', req.file);
+    console.log('Request params:', req.params);
+
+    // Check if file was uploaded
+    if (!req.file) {
+      console.error('No file uploaded');
+      return res.status(400).send({ message: "No file uploaded" });
+    }
+
+    const filePath = req.file.path;
+    const userId = req.params.id;
+
+    console.log('File path:', filePath);
+    console.log('User ID:', userId);
+
+    // Save image path in the user's record
+    const result = await model.saveUserImagePath({ id: userId, image_path: filePath });
+
+    console.log('Database update result:', result);
+    res.send({ message: "File uploaded successfully", data: result });
+  } catch (error) {
+    console.error('File upload error:', error);
+    res.status(500).send({ message: "File upload failed", error: error.message });
+  }
+};
+

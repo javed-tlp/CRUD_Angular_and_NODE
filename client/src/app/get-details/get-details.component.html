@@ -8,8 +8,10 @@
         <th scope="col">Name</th>
         <th scope="col">Email</th>
         <th scope="col">Age</th>
+        <th scope="col">Image</th>
         <th scope="col">Action</th>
       </tr>
+
       <!-- Search Inputs Row -->
       <tr class="search-row">
         <td><input
@@ -44,9 +46,16 @@
         <td>{{student.Email}}</td>
         <td>{{student.Age}}</td>
         <td>
+          <a *ngIf="student.image_path" [href]="'http://localhost:3001/' + student.image_path" target="_blank">
+            <img [src]="'http://localhost:3001/' + student.image_path" alt="Student Image" style="max-width: 100px; height: auto;" />
+          </a>
+        </td>
+        
+        <td>
           <button class="btn btn-primary" routerLink="../edit-details/{{student.id}}" (click)="getuserbyID(student.id)">Edit</button>
           <button class="btn btn-danger" (click)="ondelete(student.id)">Delete</button>
         </td>
+        
       </tr>
     </tbody>
   </table>

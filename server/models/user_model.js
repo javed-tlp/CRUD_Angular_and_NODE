@@ -3,17 +3,18 @@ const db = require("../config/db_con");
 
 const user = (data) => {};
 
-user.postDetail = (data) => {
+user.postDetail = (data, imagePath) => {
   return new Promise((resolve, reject) => {
-    var nowDateTime = moment().format("YYYY-MM-DD HH:mm:ss")
+    var nowDateTime = moment().format("YYYY-MM-DD HH:mm:ss");
     const entry_data = {
       Name: data.Name ? data.Name : "",
       Email: data.Email ? data.Email : "",
       Age: data.Age ? data.Age : "",
-      created_at : nowDateTime
+      created_at: nowDateTime,
+      image_path: data.imagePath ? data.imagePath : null // Use forward slashes for consistency
     };
     const queryStr = "INSERT INTO users SET ?";
-    console.log("Data Inserted:--", entry_data)
+    console.log("Data Inserted:--", entry_data);
     db.query(queryStr, entry_data, (err, result) => {
       if (err) {
         return reject(err);
@@ -100,5 +101,28 @@ user.deleteDetails = (data) => {
     });
   }); 
 };
+
+
+user.saveUserImagePath = (data) => {
+  return new Promise((resolve, reject) => {
+    const queryStr = "UPDATE users SET image_path = ? WHERE id = ?";
+    const values = [data.image_path, data.id];
+
+    console.log('Executing query:', queryStr);
+    console.log('With values:', values);
+
+    db.query(queryStr, values, (err, result) => {
+      if (err) {
+        console.error('Database query error:', err);
+        return reject(err);
+      } else {
+        console.log('Database query result:', result);
+        return resolve(result);
+      }
+    });
+  });
+};
+
+
 
 module.exports = user;
