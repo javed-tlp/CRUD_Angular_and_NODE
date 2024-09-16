@@ -51,6 +51,8 @@ export class GetDetailsComponent implements OnInit {
 
   getuserbyID(stu_id: any) {
     this.userdetails.getuserbyID(stu_id).subscribe((result) => {
+      console.log("Response in frontend",result)
+      console.log("ID--->",stu_id)
       // Handle user data here
     });
   }

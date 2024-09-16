@@ -34,6 +34,7 @@ exports.getData = async (req, res) => {
 exports.getDatabyid = async (req, res) => {
   try {
     const result = await model.getDetailsbyId(req.params.id);
+    console.log("Result",result)
     res.send({ message: "Data fetched successfully", data: result });
   } catch (error) {
     console.error('Error fetching data by ID:', error);
