@@ -53,11 +53,13 @@ user.getDetailsbyId = (id) => {
 
 user.updateDetails = (data) => {
   return new Promise((resolve, reject) => {
+    const nowDateTime = moment().format("YYYY-MM-DD HH:mm:ss");
     const updatedData = {
       Name: data.Name || "",
       Email: data.Email || "",
       Age: data.Age || "",
-      image_path: data.image_path || null
+      image_path: data.image_path || null,
+      updated_at: nowDateTime
     };
 
     const queryStr = "UPDATE users SET ? WHERE id = ?";
