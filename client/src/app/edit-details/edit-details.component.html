@@ -1,31 +1,33 @@
 <div class="container mt-5">
-    <div class="row">
-      <div>
-        <h1>Edit Details</h1>
-      </div>
-      <div class="col-md-6 offset-md-1" id="blocktwo">
-        <form (ngSubmit)="onupdate()" class="mt-4 mt-md-0">
-          <div class="form-group">
-            <input class="form-control" [(ngModel)]="studentDetail.Name" name="Name" type="text" placeholder="Name" />
-          </div>
-          <div class="form-group"> 
-            <input class="form-control" [(ngModel)]="studentDetail.Email" name="Email" type="text" placeholder="Email" />
-          </div>
-          <div class="form-group">
-            <input class="form-control" [(ngModel)]="studentDetail.Age" name="Age" type="text" placeholder="Age" />
-          </div>
-          <!-- Display student image -->
-<div *ngIf="studentimage">
+  <div class="row">
+    <div>
+      <h1>Edit Details</h1>
+    </div>
+    <div class="col-md-6 offset-md-1" id="blocktwo">
+      <form (ngSubmit)="onupdate()" class="mt-4 mt-md-0">
+
+        <!-- Display student image -->
+<div *ngIf="studentimage" class="d-flex justify-content-center align-items-center">
   <img [src]="studentimage" alt="Student Image" class="img-fluid mb-3" style="width: 150px; height: auto;" />
 </div>
 
-          <div>
-            <button type="submit" class="btn btn-primary">Update</button>
-          </div>
-        </form>
-      </div>
-  
+
+        <div class="form-group">
+          <input class="form-control" [(ngModel)]="studentDetail.Name" name="Name" type="text" placeholder="Name" />
+        </div>
+        <div class="form-group">
+          <input class="form-control" [(ngModel)]="studentDetail.Email" name="Email" type="text" placeholder="Email" />
+        </div>
+        <div class="form-group">
+          <input class="form-control" [(ngModel)]="studentDetail.Age" name="Age" type="text" placeholder="Age" />
+        </div>
+        
+
+        <div>
+          <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+      </form>
     </div>
+
   </div>
-  
-  
+</div>
