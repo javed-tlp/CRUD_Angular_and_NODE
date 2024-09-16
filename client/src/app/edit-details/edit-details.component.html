@@ -4,7 +4,7 @@
       <h1>Edit Details</h1>
     </div>
     <div class="col-md-6 offset-md-1" id="blocktwo">
-      <form (ngSubmit)="onupdate()" class="mt-4 mt-md-0">
+      <form (ngSubmit)="onupdate()" class="mt-4 mt-md-0" enctype="multipart/form-data">
 
         <!-- Display student image or 'No image' when not available -->
         <div class="d-flex justify-content-center align-items-center">
@@ -14,8 +14,6 @@
           <!-- Show 'No image' if studentimage is not available -->
           <p *ngIf="studentimage == null">No image</p>
         </div>
-
-
 
         <div class="form-group">
           <input class="form-control" [(ngModel)]="studentDetail.Name" name="Name" type="text" placeholder="Name" />
@@ -27,12 +25,15 @@
           <input class="form-control" [(ngModel)]="studentDetail.Age" name="Age" type="text" placeholder="Age" />
         </div>
 
+        <!-- File input for updating the image -->
+        <div class="form-group">
+          <input class="form-control" type="file" (change)="onFileSelected($event)" name="file" />
+        </div>
 
         <div>
           <button type="submit" class="btn btn-primary">Update</button>
         </div>
       </form>
     </div>
-
   </div>
 </div>
