@@ -14,7 +14,7 @@ exports.postData = async (req, res) => {
     };
 
     const result = await model.postDetail(userData);
-    res.send({ message: "Data added successfully", data: result });
+    res.send({ message: "Data ad successfully", data: result });
   } catch (error) {
     console.error('Error adding data:', error);
     res.status(500).send({ message: "Data addition failed", error: error.message });
