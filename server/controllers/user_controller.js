@@ -24,6 +24,7 @@ exports.postData = async (req, res) => {
 exports.getData = async (req, res) => {
   try {
     const result = await model.getDetails();
+    // console.log("Result in Get--->",result)
     res.send({ message: "Data retrieved successfully", data: result });
   } catch (error) {
     console.error('Error retrieving data:', error);
@@ -34,7 +35,7 @@ exports.getData = async (req, res) => {
 exports.getDatabyid = async (req, res) => {
   try {
     const result = await model.getDetailsbyId(req.params.id);
-    console.log("Result",result)
+    // console.log("Result",result)
     res.send({ message: "Data fetched successfully", data: result });
   } catch (error) {
     console.error('Error fetching data by ID:', error);
@@ -53,6 +54,8 @@ exports.updateData = async (req, res) => {
       Age: req.body.Age,
       image_path: imagePath
     };
+    console.log("Result in Upadte--->",userData)
+
 
     const result = await model.updateDetails(userData);
     res.send({ message: "Data updated successfully", data: result });
