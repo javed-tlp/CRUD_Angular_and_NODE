@@ -6,10 +6,15 @@
     <div class="col-md-6 offset-md-1" id="blocktwo">
       <form (ngSubmit)="onupdate()" class="mt-4 mt-md-0">
 
-        <!-- Display student image -->
-<div *ngIf="studentimage" class="d-flex justify-content-center align-items-center">
-  <img [src]="studentimage" alt="Student Image" class="img-fluid mb-3" style="width: 150px; height: auto;" />
-</div>
+        <!-- Display student image or 'No image' when not available -->
+        <div class="d-flex justify-content-center align-items-center">
+          <!-- Show image if studentimage is available -->
+          <img *ngIf="studentimage" [src]="studentimage" class="img-fluid mb-3" style="width: 150px; height: auto;" />
+
+          <!-- Show 'No image' if studentimage is not available -->
+          <p *ngIf="studentimage == null">No image</p>
+        </div>
+
 
 
         <div class="form-group">
@@ -21,7 +26,7 @@
         <div class="form-group">
           <input class="form-control" [(ngModel)]="studentDetail.Age" name="Age" type="text" placeholder="Age" />
         </div>
-        
+
 
         <div>
           <button type="submit" class="btn btn-primary">Update</button>

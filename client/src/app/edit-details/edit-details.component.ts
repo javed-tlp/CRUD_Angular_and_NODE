@@ -26,12 +26,15 @@ export class EditDetailsComponent implements OnInit {
     this.studentID = this.route.snapshot.paramMap.get('id');
     this.userser.getuserbyID(this.studentID).subscribe((res: any) => {
       this.studentDetail = res.data[0];
-      this.studentimage = `http://localhost:3001/${res.data[0].image_path}`;  // Adjust the base URL as needed
-
+  
+      // Check if the image_path is available and construct the image URL accordingly
+      this.studentimage = res.data[0].image_path ? `http://localhost:3001/${res.data[0].image_path}` : null;
+  
       console.log("StudentDetails:---", this.studentDetail);
       console.log("Studentimage:---", this.studentimage);
     });
   }
+  
 
   onupdate() {
     const updateddata = {
