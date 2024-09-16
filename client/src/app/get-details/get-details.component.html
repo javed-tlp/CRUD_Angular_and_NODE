@@ -40,20 +40,20 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let student of filteredData">
-        <th scope="row">{{student.id}}</th>
-        <td>{{student.Name}}</td>
-        <td>{{student.Email}}</td>
-        <td>{{student.Age}}</td>
+      <tr *ngFor="let row of filteredData">
+        <th scope="row">{{row.id}}</th>
+        <td>{{row.Name}}</td>
+        <td>{{row.Email}}</td>
+        <td>{{row.Age}}</td>
         <td>
-          <a *ngIf="student.image_path" [href]="'http://localhost:3001/' + student.image_path" target="_blank">
-            <img [src]="'http://localhost:3001/' + student.image_path" alt="Student Image" style="max-width: 100px; height: auto;" />
+          <a *ngIf="row.image_path" [href]="'http://localhost:3001/' + row.image_path" target="_blank">
+            <img [src]="'http://localhost:3001/' + row.image_path" alt="row Image" style="max-width: 100px; height: auto;" />
           </a>
         </td>
         
         <td>
-          <button class="btn btn-primary" routerLink="../edit-details/{{student.id}}" (click)="getuserbyID(student.id)">Edit</button>
-          <button class="btn btn-danger" (click)="ondelete(student.id)">Delete</button>
+          <button class="btn btn-primary" routerLink="../edit-details/{{row.id}}" (click)="getuserbyID(row.id)">Edit</button>
+          <button class="btn btn-danger" (click)="ondelete(row.id)">Delete</button>
         </td>
         
       </tr>
