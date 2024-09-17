@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserServiceService } from '../services/user-service.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
@@ -20,7 +21,10 @@ export class GetDetailsComponent implements OnInit {
   searchQueryName: string = '';
   searchQueryEmail: string = '';
 
-  constructor(private userdetails: UserServiceService) { }
+  constructor(
+    private userdetails: UserServiceService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.userdetails.getalldetails().subscribe((fetchedData) => {
@@ -49,11 +53,12 @@ export class GetDetailsComponent implements OnInit {
     });
   }
 
-  getuserbyID(stu_id: any) {
-    this.userdetails.getuserbyID(stu_id).subscribe((result) => {
-      console.log("Response in frontend",result)
-      console.log("ID--->",stu_id)
-      // Handle user data here
+  getCandidateDetails(id: any) {
+    // Fetch the candidate details (if needed)
+    this.userdetails.getCandidateDetails(id).subscribe((result) => {
+      console.log("Response:", result);
+      // Navigate to the details page
+      this.router.navigate(['/details', id]);
     });
   }
 }

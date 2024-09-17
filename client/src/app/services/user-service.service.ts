@@ -5,8 +5,8 @@ import { Injectable, inject } from '@angular/core';
   providedIn: 'root'
 })
 export class UserServiceService {
-  httpclient = inject(HttpClient)
-  readonly url = "http://localhost:3001/user/"
+  httpclient = inject(HttpClient);
+  readonly url = "http://localhost:3001/user/";
 
   constructor(private httpClient: HttpClient) { }
 
@@ -29,5 +29,14 @@ export class UserServiceService {
 
   onupdate(updateddata: any, studentID: any) {
     return this.httpclient.put(`${this.url}update/${studentID}`, updateddata);
+  }
+
+  // Method to get candidate details by ID
+  getCandidateById(id: string) {
+    return this.httpclient.get(`${this.url}get/${id}`);
+  }
+
+  getCandidateDetails(id: string) {
+    return this.httpclient.get(`${this.url}details/${id}`);
   }
 }

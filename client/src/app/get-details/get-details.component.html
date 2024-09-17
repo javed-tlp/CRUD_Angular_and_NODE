@@ -40,9 +40,9 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let row of filteredData">
+      <tr *ngFor="let row of filteredData" (click)="getCandidateDetails(row.id)" style="cursor: pointer;">
         <th scope="row">{{row.id}}</th>
-        <td routerLink="/details" style="cursor: pointer;" >{{row.Name}}</td>
+        <td>{{row.Name}}</td>
         <td>{{row.Email}}</td>
         <td>{{row.Age}}</td>
         <td>
@@ -50,12 +50,10 @@
             <img [src]="'http://localhost:3001/' + row.image_path" alt="row Image" style="max-width: 100px; height: auto;" />
           </a>
         </td>
-        
         <td>
-          <button class="btn btn-primary" routerLink="../edit-details/{{row.id}}" (click)="getuserbyID(row.id)">Edit</button>
+          <button class="btn btn-primary" [routerLink]="['/edit-details', row.id]">Edit</button>
           <button class="btn btn-danger" (click)="ondelete(row.id)">Delete</button>
         </td>
-        
       </tr>
     </tbody>
   </table>

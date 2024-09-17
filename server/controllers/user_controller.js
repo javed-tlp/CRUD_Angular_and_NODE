@@ -43,6 +43,18 @@ exports.getDatabyid = async (req, res) => {
   }
 };
 
+// In your controller file (e.g., `controllers/user_controller.js`)
+exports.getDetailsbyid = async (req, res) => {
+  try {
+    const result = await model.getallDetailsbyId(req.params.id);
+    res.send({ message: "Data fetched successfully", data: result });
+  } catch (error) {
+    console.error('Error fetching data by ID:', error);
+    res.status(500).send({ message: "Data fetch failed", error: error.message });
+  }
+};
+
+
 exports.updateData = async (req, res) => {
   try {
     const imagePath = req.file ? req.file.path : null;

@@ -32,5 +32,8 @@ router.get('/get', controller.getData);
 router.get('/get/:id', controller.getDatabyid);
 router.put('/update/:id', upload.single('file'), controller.updateData); // Updated to allow image upload on update
 router.post('/delete/:id', controller.deleteData);
+router.get('/details/:id', controller.getDetailsbyid);
+
+
 
 module.exports = router;

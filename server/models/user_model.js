@@ -41,6 +41,21 @@ user.getDetails = () => {
 user.getDetailsbyId = (id) => {
   return new Promise((resolve, reject) => {
     const queryStr = "SELECT * FROM users WHERE id = ? AND status = 1";
+    console.log("Data by ID-->",queryStr)
+    db.query(queryStr, [id], (err, result) => {
+      if (err) {
+        return reject(err);
+      } else {
+        return resolve(result);
+      }
+    });
+  });
+};
+
+user.getallDetailsbyId = (id) => {
+  return new Promise((resolve, reject) => {
+    const queryStr = "SELECT * FROM users WHERE id = ? AND status = 1";
+    console.log("Data by ID-->",queryStr)
     db.query(queryStr, [id], (err, result) => {
       if (err) {
         return reject(err);
