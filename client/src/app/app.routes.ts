@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { AddDetailsComponent } from './add-details/add-details.component';
 import { EditDetailsComponent } from './edit-details/edit-details.component';
 import { GetDetailsComponent } from './get-details/get-details.component';
+import { DetailsComponent } from './details/details.component';
 
 
 
@@ -11,5 +12,7 @@ export const routes: Routes = [
     
     { path: "edit-details/:id", component: EditDetailsComponent},
     
-    { path:"get-details", component: GetDetailsComponent }
+    { path:"get-details", component: GetDetailsComponent },
+
+    { path: "details", component: DetailsComponent}
 ];

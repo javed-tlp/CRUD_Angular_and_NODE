@@ -42,7 +42,7 @@
     <tbody>
       <tr *ngFor="let row of filteredData">
         <th scope="row">{{row.id}}</th>
-        <td>{{row.Name}}</td>
+        <td routerLink="/details" style="cursor: pointer;" >{{row.Name}}</td>
         <td>{{row.Email}}</td>
         <td>{{row.Age}}</td>
         <td>
