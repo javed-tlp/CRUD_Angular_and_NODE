@@ -37,7 +37,7 @@ export class DetailsComponent implements OnInit {
       this.userservice.getCandidateById(id).subscribe((res) => {
         this.candidate = res
         this.datata = this.candidate.data[0]
-        this.image = this.candidate.data[0].image_path
+        // this.image = this.candidate.data[0].image_path
 
         console.log("datatatata",this.image)
         console.log('Response--->:', res);
@@ -50,5 +50,13 @@ export class DetailsComponent implements OnInit {
 
   goBack() {
     this.router.navigate(['/get-details']);
+  }
+
+  deleteduser(stu_id: any) {
+    this.userservice.ondelete(stu_id).subscribe((result) => {
+      this.router.navigateByUrl("/get-details")
+      alert("User deleted successfully");
+      this.ngOnInit();
+    });
   }
 }
