@@ -19,6 +19,8 @@
         </div>
         <div class="card-footer">
             <button class="btn btn-primary" (click)="goBack()">Go Back</button>
+            <button class="btn btn-primary" [routerLink]="['/edit-details', candidate.data[0].id]">Edit</button>
+
         </div>
     </div>
     <ng-template #loading>
