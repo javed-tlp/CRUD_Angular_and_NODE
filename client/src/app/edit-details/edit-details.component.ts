@@ -29,8 +29,8 @@ export class EditDetailsComponent implements OnInit {
       this.studentDetail = res.data[0];
       this.studentimage = res.data[0].image_path ? `http://localhost:3001/${res.data[0].image_path}` : null;
 
-      console.log("StudentDetails:---", this.studentDetail);
-      console.log("Studentimage:---", this.studentimage);
+      // console.log("StudentDetails:---", this.studentDetail);
+      // console.log("Studentimage:---", this.studentimage);
     });
   }
 
