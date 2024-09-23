@@ -5,11 +5,21 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { AddDetailsComponent } from '../add-details/add-details.component';
 import { GetDetailsComponent } from '../get-details/get-details.component';
 import { DetailsComponent } from '../details/details.component';
+import { ProjectListComponent } from '../projects/project-list/project-list.component';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [AddDetailsComponent, GetDetailsComponent, RouterLink, RouterOutlet, HttpClientModule, FormsModule, DetailsComponent],
+  imports: [
+    AddDetailsComponent, 
+    GetDetailsComponent, 
+    RouterLink, 
+    RouterOutlet, 
+    HttpClientModule, 
+    FormsModule, 
+    DetailsComponent,
+    ProjectListComponent
+  ],
 
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'

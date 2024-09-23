@@ -39,4 +39,8 @@ export class UserServiceService {
   getCandidateDetails(id: string) {
     return this.httpclient.get(`${this.url}details/${id}`);
   }
+
+  getProjects(){
+    return this.httpclient.get(`${this.url}projects`);
+  }
 }

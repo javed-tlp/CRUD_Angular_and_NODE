@@ -1,0 +1,43 @@
+<div class="container">
+  <h1 class="text-center">Project List</h1>
+
+  <table class="table table-bordered project-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Project Name</th>
+        <th>Frontend Tech</th>
+        <th>Backend Tech</th>
+        <th>Database Tech</th>
+        <th style="width: 250px;">Description</th>
+        <th>Image</th>
+        <th>Link</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let project of projects">
+        <td>{{ project.id }}</td>
+        <td>{{ project.name }}</td>
+        <td>{{ project.frontend_tech }}</td>
+        <td>{{ project.backend_tech }}</td>
+        <td>{{ project.db_tech }}</td>
+        <td>
+          <ul class="description-list">
+            <li *ngFor="let detail of project.description.split('\n')">{{ detail }}</li>
+          </ul>
+        </td>
+        <td>
+          <img [src]="project.image" alt="{{ project.name }}" style="max-width: 100px; height: auto;" />
+        </td>
+        <td>
+          <a [href]="project.link" target="_blank" class="btn btn-link">View Project</a>
+        </td>
+        <td>{{ project.status }}</td>
+      </tr>
+      <tr *ngIf="projects.length === 0">
+        <td colspan="8" class="text-center">No projects available</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
