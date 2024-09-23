@@ -35,7 +35,8 @@ router.post('/delete/:id', controller.deleteData);
 router.get('/details/:id', controller.getDetailsbyid);
 
 // for projects
-router.get('/projects', controller.getProjects);
+router.get('/projects_list', controller.getProjects);
+router.get('/projects_details/:id', controller.getProjectsDetails)
 
 
 

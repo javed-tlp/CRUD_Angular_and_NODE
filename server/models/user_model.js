@@ -114,4 +114,18 @@ user.getProjectsDetails = () => {
   });
 };
 
+user.getallProjectsDetails = (id) => {
+  return new Promise((resolve, reject) => {
+    const queryStr = "SELECT * FROM projects WHERE id = ? AND status = 1";
+    // console.log("Data by ID-->",queryStr)
+    db.query(queryStr, [id], (err, result) => {
+      if (err) {
+        return reject(err);
+      } else {
+        return resolve(result);
+      }
+    });
+  });
+};
+
 module.exports = user;

@@ -97,3 +97,14 @@ exports.getProjects = async (req, res) => {
     res.status(500).send({ message: "Data retrieval failed", error: error.message });
   }
 };
+
+exports.getProjectsDetails = async (req, res) => {
+  try {
+    const result = await model.getallProjectsDetails(req.params.id);
+    console.log("Result",result)
+    res.send({ message: "Data fetched successfully", data: result });
+  } catch (error) {
+    console.error('Error fetching data by ID:', error);
+    res.status(500).send({ message: "Data fetch failed", error: error.message });
+  }
+};

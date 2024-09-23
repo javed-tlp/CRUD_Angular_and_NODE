@@ -41,6 +41,6 @@ export class UserServiceService {
   }
 
   getProjects(){
-    return this.httpclient.get(`${this.url}projects`);
+    return this.httpclient.get(`${this.url}projects_list`);
   }
 }
