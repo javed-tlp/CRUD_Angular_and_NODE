@@ -1,0 +1,42 @@
+<div class="container">
+    <button class="btn btn-secondary mb-3" (click)="goBack()" aria-label="Back">
+        &#x2190;
+    </button>
+
+    <h2 class="text-center">Project Details</h2>
+  
+    <div *ngIf="projectsDetails.length > 0; else loading" class="project-details">
+        <h3>{{ projectsDetails[0].name }}</h3>
+  
+        <div class="tech-stack">
+            <p><strong>Frontend Tech:</strong> {{ projectsDetails[0].frontend_tech }}</p>
+            <p><strong>Backend Tech:</strong> {{ projectsDetails[0].backend_tech }}</p>
+            <p><strong>Database Tech:</strong> {{ projectsDetails[0].db_tech }}</p>
+        </div>
+  
+        <div class="description">
+            <h4>Description:</h4>
+            <ul>
+                <li *ngFor="let detail of projectsDetails[0].description.split('\n')">
+                    {{ detail }}
+                </li>
+            </ul>
+        </div>
+  
+        <div class="project-image">
+            <img [src]="projectsDetails[0].image" alt="{{ projectsDetails[0].name }}" class="img-fluid">
+        </div>
+  
+        <div class="project-status">
+            <p><strong>Status:</strong> {{ projectsDetails[0].status }}</p>
+        </div>
+  
+        <div class="project-link">
+            <a *ngIf="projectsDetails[0].link" [href]="projectsDetails[0].link" target="_blank" class="btn btn-primary">View Project</a>
+        </div>
+    </div>
+  
+    <ng-template #loading>
+        <p class="text-center">Loading project details...</p>
+    </ng-template>
+</div>

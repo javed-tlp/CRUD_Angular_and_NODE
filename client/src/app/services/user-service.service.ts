@@ -43,4 +43,7 @@ export class UserServiceService {
   getProjects(){
     return this.httpclient.get(`${this.url}projects_list`);
   }
+  getProjectsDetails(id:string){
+    return this.httpclient.get(`${this.url}projects_details/${id}`);
+  }
 }

@@ -9,7 +9,7 @@
         <th>Frontend Tech</th>
         <th>Backend Tech</th>
         <th>Database Tech</th>
-        <th style="width: 250px;">Description</th>
+        <!-- <th style="width: 250px;">Description</th> -->
         <th>Image</th>
         <th>Link</th>
         <th>Status</th>
@@ -17,16 +17,21 @@
     </thead>
     <tbody>
       <tr *ngFor="let project of projects">
-        <td>{{ project.id }}</td>
-        <td>{{ project.name }}</td>
+        <!-- Use routerLink to navigate to the project-details with project.id -->
+        <td>
+          <a [routerLink]="['/projects-details', project.id]">{{ project.id }}</a>
+        </td>
+        <td>
+          <a [routerLink]="['/projects-details', project.id]">{{ project.name }}</a>
+        </td>
         <td>{{ project.frontend_tech }}</td>
         <td>{{ project.backend_tech }}</td>
         <td>{{ project.db_tech }}</td>
-        <td>
+        <!-- <td>
           <ul class="description-list">
             <li *ngFor="let detail of project.description.split('\n')">{{ detail }}</li>
           </ul>
-        </td>
+        </td> -->
         <td>
           <img [src]="project.image" alt="{{ project.name }}" style="max-width: 100px; height: auto;" />
         </td>
@@ -36,7 +41,7 @@
         <td>{{ project.status }}</td>
       </tr>
       <tr *ngIf="projects.length === 0">
-        <td colspan="8" class="text-center">No projects available</td>
+        <td colspan="9" class="text-center">No projects available</td>
       </tr>
     </tbody>
   </table>
