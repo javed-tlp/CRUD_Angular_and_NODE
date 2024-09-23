@@ -101,4 +101,17 @@ user.deleteDetails = (id) => {
   });
 };
 
+user.getProjectsDetails = () => {
+  return new Promise((resolve, reject) => {
+    const queryStr = "SELECT * FROM projects";
+    db.query(queryStr, (err, result) => {
+      if (err) {
+        return reject(err);
+      } else {
+        return resolve(result);
+      }
+    });
+  });
+};
+
 module.exports = user;

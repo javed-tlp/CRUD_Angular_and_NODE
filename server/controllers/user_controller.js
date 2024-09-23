@@ -86,3 +86,14 @@ exports.deleteData = async (req, res) => {
     res.status(500).send({ message: "Data deletion failed", error: error.message });
   }
 };
+
+exports.getProjects = async (req, res) => {
+  try {
+    const result = await model.getProjectsDetails();
+    console.log("Result in Get--->",result)
+    res.send({ message: "Data retrieved successfully", data: result });
+  } catch (error) {
+    console.error('Error retrieving data:', error);
+    res.status(500).send({ message: "Data retrieval failed", error: error.message });
+  }
+};

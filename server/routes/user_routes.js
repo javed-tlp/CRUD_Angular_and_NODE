@@ -34,6 +34,10 @@ router.put('/update/:id', upload.single('file'), controller.updateData); // Upda
 router.post('/delete/:id', controller.deleteData);
 router.get('/details/:id', controller.getDetailsbyid);
 
+// for projects
+router.get('/projects', controller.getProjects);
+
+
 
 
 module.exports = router;
