@@ -103,7 +103,7 @@ user.deleteDetails = (id) => {
 
 user.getProjectsDetails = () => {
   return new Promise((resolve, reject) => {
-    const queryStr = "SELECT * FROM projects";
+    const queryStr = "SELECT * FROM projects WHERE status = 1";
     db.query(queryStr, (err, result) => {
       if (err) {
         return reject(err);

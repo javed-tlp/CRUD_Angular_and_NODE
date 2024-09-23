@@ -99,16 +99,16 @@ h1 {
   color: #0056b3; /* Darker blue on hover */
 }
 
-/* Bullet point styling */
+/* Description list styling */
 .description-list {
-  list-style-type: disc; /* Use disc for bullet points */
+  list-style-type: none; /* Remove bullet points */
   padding-left: 20px; /* Add padding to the left */
   margin: 0; /* Remove default margin */
   text-align: left; /* Align text to the left */
 }
 
 .description-list li {
-  margin-bottom: 5px; /* Space between bullet points */
+  margin-bottom: 5px; /* Space between items */
   overflow-wrap: break-word; /* Allow breaking long words */
 }
 

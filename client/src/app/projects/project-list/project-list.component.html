@@ -6,12 +6,12 @@
       <tr>
         <th>ID</th>
         <th>Project Name</th>
-        <th>Frontend Tech</th>
+        <!-- <th>Frontend Tech</th>
         <th>Backend Tech</th>
-        <th>Database Tech</th>
+        <th>Database Tech</th> -->
         <!-- <th style="width: 250px;">Description</th> -->
-        <th>Image</th>
-        <th>Link</th>
+        <!-- <th>Image</th>
+        <th>Link</th> -->
         <!-- <th>Status</th> -->
       </tr>
     </thead>
@@ -19,25 +19,27 @@
       <tr *ngFor="let project of projects">
         <!-- Use routerLink to navigate to the project-details with project.id -->
         <td>
-          <a [routerLink]="['/projects-details', project.id]">{{ project.id }}</a>
+          {{ project.id }}
         </td>
         <td>
           <a [routerLink]="['/projects-details', project.id]">{{ project.name }}</a>
         </td>
-        <td>{{ project.frontend_tech }}</td>
+        <!-- <td>{{ project.frontend_tech }}</td>
         <td>{{ project.backend_tech }}</td>
-        <td>{{ project.db_tech }}</td>
+        <td>{{ project.db_tech }}</td> -->
         <!-- <td>
           <ul class="description-list">
             <li *ngFor="let detail of project.description.split('\n')">{{ detail }}</li>
           </ul>
         </td> -->
-        <td>
-          <img [src]="project.image" alt="{{ project.name }}" style="max-width: 100px; height: auto;" />
-        </td>
-        <td>
+        <!-- <td>
+          <img *ngIf="project.image" [src]="'http://localhost:3001/' + project.image" alt="{{ project.name }}" style="max-width: 100px; height: auto;" />
+          <span *ngIf="!project.image">No image available</span> 
+        </td> -->
+        
+        <!-- <td>
           <a [href]="project.link" target="_blank" class="btn btn-link">View Project</a>
-        </td>
+        </td> -->
         <!-- <td>{{ project.status }}</td> -->
       </tr>
       <tr *ngIf="projects.length === 0">
