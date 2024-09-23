@@ -12,7 +12,7 @@
         <!-- <th style="width: 250px;">Description</th> -->
         <th>Image</th>
         <th>Link</th>
-        <th>Status</th>
+        <!-- <th>Status</th> -->
       </tr>
     </thead>
     <tbody>
@@ -38,7 +38,7 @@
         <td>
           <a [href]="project.link" target="_blank" class="btn btn-link">View Project</a>
         </td>
-        <td>{{ project.status }}</td>
+        <!-- <td>{{ project.status }}</td> -->
       </tr>
       <tr *ngIf="projects.length === 0">
         <td colspan="9" class="text-center">No projects available</td>
