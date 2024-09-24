@@ -23,8 +23,8 @@ app.use('/user', router);
 
 // Start the server
 app.listen(port, () => {
-    console.log(`The server is live on port ${port}`);
-    console.log(`http://localhost:${port}`);
+    // console.log(`The server is live on port ${port}`);
+    // console.log(`http://localhost:${port}`);
 });
 
 // Global error handling middleware

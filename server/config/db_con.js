@@ -12,7 +12,7 @@ con.connect((err)=>{
         console.log(err)
     }
     else{
-        console.log("connected to the database")
+        // console.log("connected to the database")
         // const queryStr="CREATE DATABASE IF NOT EXISTS angular"
         // con.query(queryStr,(err)=>{
         //     if(err){
