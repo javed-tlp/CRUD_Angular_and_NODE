@@ -114,18 +114,17 @@ user.getProjectsDetails = () => {
   });
 };
 
-user.getallProjectsDetails = (id) => {
+user.getProjectDetailsById = (id) => {
   return new Promise((resolve, reject) => {
-    const queryStr = "SELECT * FROM projects WHERE id = ? AND status = 1";
-    // console.log("Data by ID-->",queryStr)
+    const queryStr = "SELECT * FROM projects WHERE id = ? AND status = 1"; // Adjust based on your schema
     db.query(queryStr, [id], (err, result) => {
       if (err) {
         return reject(err);
-      } else {
-        return resolve(result);
       }
+      return resolve(result);
     });
   });
 };
+
 
 module.exports = user;

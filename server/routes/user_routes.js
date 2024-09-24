@@ -28,17 +28,14 @@ const upload = multer({
 
 // Routes
 router.post('/post', upload.single('file'), controller.postData);
-router.get('/get', controller.getData);
-router.get('/get/:id', controller.getDatabyid);
-router.put('/update/:id', upload.single('file'), controller.updateData); // Updated to allow image upload on update
+router.post('/get', controller.getData); // Changed to POST
+router.post('/get/:id', controller.getDatabyid); // Changed to POST
+router.post('/update/:id', upload.single('file'), controller.updateData); // Changed to POST
 router.post('/delete/:id', controller.deleteData);
-router.get('/details/:id', controller.getDetailsbyid);
+router.post('/details/:id', controller.getDetailsbyid); // Changed to POST
 
-// for projects
-router.get('/projects_list', controller.getProjects);
-router.get('/projects_details/:id', controller.getProjectsDetails)
-
-
-
+// For projects
+router.post('/projects_list', controller.getProjects); // Already POST
+router.post('/projects_details', controller.getProjectsDetails); // Changed to POST
 
 module.exports = router;

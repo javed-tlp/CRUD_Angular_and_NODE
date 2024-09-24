@@ -70,7 +70,7 @@ exports.updateData = async (req, res) => {
 
 
     const result = await model.updateDetails(userData);
-    res.send({ message: "Data updated successfully", data: result });
+    res.send({ message: "Data updated successfully", data: userData });
   } catch (error) {
     console.error('Error updating data:', error);
     res.status(500).send({ message: "Data update failed", error: error.message });
@@ -89,8 +89,10 @@ exports.deleteData = async (req, res) => {
 
 exports.getProjects = async (req, res) => {
   try {
-    const result = await model.getProjectsDetails();
-    // console.log("Result in Get--->",result)
+    // If you want to filter data based on something in req.body, you can use req.body here
+    // For example: const status = req.body.status || 1;
+
+    const result = await model.getProjectsDetails(); // Call the model method as it is
     res.send({ message: "Data retrieved successfully", data: result });
   } catch (error) {
     console.error('Error retrieving data:', error);
@@ -98,13 +100,19 @@ exports.getProjects = async (req, res) => {
   }
 };
 
+
 exports.getProjectsDetails = async (req, res) => {
   try {
-    const result = await model.getallProjectsDetails(req.params.id);
-    // console.log("Result",result)
-    res.send({ message: "Data fetched successfully", data: result });
+    const projectId = req.body.id; // Get project ID from request body
+    const result = await model.getProjectDetailsById(projectId);
+
+    if (!result || result.length === 0) {
+      return res.status(404).send({ message: "Project not found" });
+    }
+
+    res.send({ message: "Project details retrieved successfully", data: result });
   } catch (error) {
-    console.error('Error fetching data by ID:', error);
-    res.status(500).send({ message: "Data fetch failed", error: error.message });
+    console.error('Error retrieving project details:', error);
+    res.status(500).send({ message: "Project details retrieval failed", error: error.message });
   }
 };
