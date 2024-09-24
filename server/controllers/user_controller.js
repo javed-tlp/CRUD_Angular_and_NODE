@@ -90,7 +90,7 @@ exports.deleteData = async (req, res) => {
 exports.getProjects = async (req, res) => {
   try {
     const result = await model.getProjectsDetails();
-    console.log("Result in Get--->",result)
+    // console.log("Result in Get--->",result)
     res.send({ message: "Data retrieved successfully", data: result });
   } catch (error) {
     console.error('Error retrieving data:', error);
@@ -101,7 +101,7 @@ exports.getProjects = async (req, res) => {
 exports.getProjectsDetails = async (req, res) => {
   try {
     const result = await model.getallProjectsDetails(req.params.id);
-    console.log("Result",result)
+    // console.log("Result",result)
     res.send({ message: "Data fetched successfully", data: result });
   } catch (error) {
     console.error('Error fetching data by ID:', error);
