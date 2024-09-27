@@ -47,7 +47,7 @@
         <td>{{row.Age}}</td>
         <td>
           <a *ngIf="row.image_path" [href]="'http://localhost:3001/' + row.image_path" target="_blank">
-            <img [src]="'http://localhost:3001/' + row.image_path" alt="row Image" style="max-width: 100px; height: auto;" />
+            <img loading="lazy" [src]="'http://localhost:3001/' + row.image_path" alt="row Image" style="max-width: 100px; height: auto;" />
           </a>
         </td>
         <td>
