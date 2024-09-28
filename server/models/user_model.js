@@ -1,130 +1,53 @@
+const mongoose = require('mongoose');
 const moment = require("moment");
-const db = require("../config/db_con");
+
+// Define the user schema
+const userSchema = new mongoose.Schema({
+  Name: { type: String, required: true },
+  Email: { type: String, required: true },
+  Age: { type: Number, required: true },
+  created_at: { type: Date, default: Date.now },
+  image_path: { type: String, default: null },
+  status: { type: Number, default: 1 } // For soft delete functionality
+});
+
+// Create the User model
+const User = mongoose.model('User', userSchema);
 
 const user = {};
 
+// MongoDB methods
 user.postDetail = (data) => {
-  return new Promise((resolve, reject) => {
-    const nowDateTime = moment().format("YYYY-MM-DD HH:mm:ss");
-    const entryData = {
-      Name: data.Name || "",
-      Email: data.Email || "",
-      Age: data.Age || "",
-      created_at: nowDateTime,
-      image_path: data.image_path || null
-    };
-
-    const queryStr = "INSERT INTO users SET ?";
-    db.query(queryStr, entryData, (err, result) => {
-      if (err) {
-        return reject(err);
-      } else {
-        return resolve(result);
-      }
-    });
-  });
+  return new User(data).save(); // Save the new user to the database
 };
 
 user.getDetails = () => {
-  return new Promise((resolve, reject) => {
-    const queryStr = "SELECT * FROM users WHERE status = 1";
-    db.query(queryStr, (err, result) => {
-      if (err) {
-        return reject(err);
-      } else {
-        return resolve(result);
-      }
-    });
-  });
+  return User.find({ status: 1 }); // Get all users with status 1
 };
 
 user.getDetailsbyId = (id) => {
-  return new Promise((resolve, reject) => {
-    const queryStr = "SELECT * FROM users WHERE id = ? AND status = 1";
-    // console.log("Data by ID-->",queryStr)
-    db.query(queryStr, [id], (err, result) => {
-      if (err) {
-        return reject(err);
-      } else {
-        return resolve(result);
-      }
-    });
-  });
+  return User.findOne({ _id: id, status: 1 }); // Get a user by ID with status 1
 };
 
 user.getallDetailsbyId = (id) => {
-  return new Promise((resolve, reject) => {
-    const queryStr = "SELECT * FROM users WHERE id = ? AND status = 1";
-    console.log("Data by ID-->",queryStr)
-    db.query(queryStr, [id], (err, result) => {
-      if (err) {
-        return reject(err);
-      } else {
-        return resolve(result);
-      }
-    });
-  });
+  return User.findOne({ _id: id, status: 1 }); // Same as above for consistency
 };
 
 user.updateDetails = (data) => {
-  return new Promise((resolve, reject) => {
-    const nowDateTime = moment().format("YYYY-MM-DD HH:mm:ss");
-    const updatedData = {
-      Name: data.Name || "",
-      Email: data.Email || "",
-      Age: data.Age || "",
-      image_path: data.image_path || null,
-      updated_at: nowDateTime
-    };
-
-    const queryStr = "UPDATE users SET ? WHERE id = ?";
-    db.query(queryStr, [updatedData, data.id], (err, result) => {
-      if (err) {
-        return reject(err);
-      } else {
-        return resolve(result);
-      }
-    });
-  });
+  return User.findByIdAndUpdate(data.id, data, { new: true }); // Update user data
 };
 
 user.deleteDetails = (id) => {
-  return new Promise((resolve, reject) => {
-    const queryStr = "UPDATE users SET status = 0 WHERE id = ?";
-    db.query(queryStr, [id], (err, result) => {
-      if (err) {
-        return reject(err);
-      } else {
-        return resolve(result);
-      }
-    });
-  });
+  return User.findByIdAndUpdate(id, { status: 0 }, { new: true }); // Soft delete user
 };
 
+// Project methods would be similar, adjust as necessary
 user.getProjectsDetails = () => {
-  return new Promise((resolve, reject) => {
-    const queryStr = "SELECT * FROM projects WHERE status = 1";
-    db.query(queryStr, (err, result) => {
-      if (err) {
-        return reject(err);
-      } else {
-        return resolve(result);
-      }
-    });
-  });
+  // Implement project fetching logic
 };
 
 user.getProjectDetailsById = (id) => {
-  return new Promise((resolve, reject) => {
-    const queryStr = "SELECT * FROM projects WHERE id = ? AND status = 1"; // Adjust based on your schema
-    db.query(queryStr, [id], (err, result) => {
-      if (err) {
-        return reject(err);
-      }
-      return resolve(result);
-    });
-  });
+  // Implement fetching project details by ID
 };
-
 
 module.exports = user;

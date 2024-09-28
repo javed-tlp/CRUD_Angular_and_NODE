@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const controller = require('../controllers/user_controller');
+const userController = require('../controllers/user_controller');
+const projectController = require('../controllers/project_controller');
 const multer = require('multer');
 
 // Set up multer storage
@@ -26,16 +27,19 @@ const upload = multer({
   }
 });
 
-// Routes
-router.post('/post', upload.single('file'), controller.postData);
-router.post('/get', controller.getData); // Changed to POST
-router.post('/get/:id', controller.getDatabyid); // Changed to POST
-router.post('/update/:id', upload.single('file'), controller.updateData); // Changed to POST
-router.post('/delete/:id', controller.deleteData);
-router.post('/details/:id', controller.getDetailsbyid); // Changed to POST
+// User Routes
+router.post('/user/post', upload.single('file'), userController.postData);
+router.post('/user/get', userController.getData);
+router.post('/user/get/:id', userController.getDatabyid);
+router.post('/user/update/:id', upload.single('file'), userController.updateData);
+router.post('/user/delete/:id', userController.deleteData);
+router.post('/user/details/:id', userController.getDetailsbyid);
 
-// For projects
-router.post('/projects_list', controller.getProjects); // Already POST
-router.post('/projects_details', controller.getProjectsDetails); // Changed to POST
+// Project Routes
+router.post('/projects/create', upload.single('file'), projectController.createProject);
+router.post('/projects/list', projectController.getProjects);
+router.post('/projects/get', projectController.getProjectById); // Send ID in request body
+router.post('/projects/update', upload.single('file'), projectController.updateProject); // Send ID and data in request body
+router.post('/projects/delete', projectController.deleteProject); // Send ID in request body
 
 module.exports = router;

@@ -19,7 +19,8 @@ require('./config/db_con');
 
 // Import and use routes
 const router = require('./routes/user_routes');
-app.use('/user', router);
+app.use('/', router);
+
 
 // Start the server
 app.listen(port, () => {
