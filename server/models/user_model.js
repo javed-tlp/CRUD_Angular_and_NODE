@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-const moment = require("moment");
 
 // Define the user schema
 const userSchema = new mongoose.Schema({
+  id: { type: Number, unique: true }, // Sequential ID
   Name: { type: String, required: true },
   Email: { type: String, required: true },
   Age: { type: Number, required: true },
@@ -17,7 +17,12 @@ const User = mongoose.model('User', userSchema);
 const user = {};
 
 // MongoDB methods
-user.postDetail = (data) => {
+user.postDetail = async (data) => {
+  // Find the highest ID currently in use
+  const lastUser = await User.findOne().sort({ id: -1 }); // Sort by ID descending
+  const nextId = lastUser ? lastUser.id + 1 : 1; // Increment the ID
+
+  data.id = nextId; // Assign the new ID
   return new User(data).save(); // Save the new user to the database
 };
 
@@ -26,28 +31,19 @@ user.getDetails = () => {
 };
 
 user.getDetailsbyId = (id) => {
-  return User.findOne({ _id: id, status: 1 }); // Get a user by ID with status 1
+  return User.findOne({ id: id, status: 1 }); // Get a user by ID with status 1
 };
 
 user.getallDetailsbyId = (id) => {
-  return User.findOne({ _id: id, status: 1 }); // Same as above for consistency
+  return User.findOne({ id: id, status: 1 }); // Same as above for consistency
 };
 
 user.updateDetails = (data) => {
-  return User.findByIdAndUpdate(data.id, data, { new: true }); // Update user data
+  return User.findOneAndUpdate({ id: data.id }, data, { new: true }); // Update user data
 };
 
 user.deleteDetails = (id) => {
-  return User.findByIdAndUpdate(id, { status: 0 }, { new: true }); // Soft delete user
-};
-
-// Project methods would be similar, adjust as necessary
-user.getProjectsDetails = () => {
-  // Implement project fetching logic
-};
-
-user.getProjectDetailsById = (id) => {
-  // Implement fetching project details by ID
+  return User.findOneAndUpdate({ id: id }, { status: 0 }, { new: true }); // Soft delete user
 };
 
 module.exports = user;

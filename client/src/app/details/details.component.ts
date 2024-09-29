@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { UserServiceService } from '../services/user-service.service';
-import { CommonModule } from '@angular/common'; // Import CommonModule
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [CommonModule, RouterLink], // Add CommonModule here
+  imports: [CommonModule, RouterLink],
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
   candidate: any;
+  datata: any;
 
   constructor(
     private userservice: UserServiceService,
@@ -24,16 +25,17 @@ export class DetailsComponent implements OnInit {
     this.getCandidateDetails(id);
   }
 
-  datata:any
-  image:any
   getCandidateDetails(id: string | null) {
     if (id) {
-      this.userservice.getCandidateById(id).subscribe((res) => {
-        this.candidate = res
-        this.datata = this.candidate.data[0]
-      });
-    } else {
-      console.log('No candidate ID provided');
+      this.userservice.getCandidateById(id).subscribe(
+        (res) => {
+          this.candidate = res;
+          this.datata = this.candidate.data; // Assuming `data` is the correct property
+        },
+        (error) => {
+          // Handle error if needed
+        }
+      );
     }
   }
 
@@ -42,10 +44,14 @@ export class DetailsComponent implements OnInit {
   }
 
   deleteduser(stu_id: any) {
-    this.userservice.ondelete(stu_id).subscribe((result) => {
-      this.router.navigateByUrl("/get-details")
-      alert("User deleted successfully");
-      this.ngOnInit();
-    });
+    this.userservice.ondelete(stu_id).subscribe(
+      () => {
+        alert("User deleted successfully");
+        this.router.navigateByUrl("/get-details");
+      },
+      (error) => {
+        // Handle error if needed
+      }
+    );
   }
 }
