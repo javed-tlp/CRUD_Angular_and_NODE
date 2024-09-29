@@ -47,14 +47,20 @@ export class GetDetailsComponent implements OnInit {
   }
 
   ondelete(stu_id: any) {
-    this.userdetails.ondelete(stu_id).subscribe((result) => {
-      alert("User deleted successfully");
-      this.ngOnInit();
-    });
+    // Call the delete service and navigate back to get-details on success
+    this.userdetails.ondelete(stu_id).subscribe(
+      () => {
+        // alert("User deleted successfully");
+        this.router.navigate(['/get-details']); // Redirect to get-details page
+      },
+      (error) => {
+        console.error("Error deleting user:", error);
+        alert("An error occurred while deleting the user."); // Optionally handle error
+      }
+    );
   }
 
   getCandidateDetails(id: any) {
-    // Fetch the candidate details (if needed)
     this.userdetails.getCandidateDetails(id).subscribe((result) => {
       console.log("Response:", result);
       // Navigate to the details page

@@ -47,7 +47,7 @@ export class DetailsComponent implements OnInit {
     this.userservice.ondelete(stu_id).subscribe(
       () => {
         alert("User deleted successfully");
-        this.router.navigateByUrl("/get-details");
+        this.router.navigateByUrl("/get-details"); // Redirect to get-details page
       },
       (error) => {
         // Handle error if needed

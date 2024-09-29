@@ -77,6 +77,7 @@ exports.updateData = async (req, res) => {
 exports.deleteData = async (req, res) => {
   try {
     const result = await model.deleteDetails(req.params.id);
+    // console.log("Data deleted -->",result)
     res.send({ message: "Data deleted successfully", data: result });
   } catch (error) {
     console.error('Error deleting data:', error);

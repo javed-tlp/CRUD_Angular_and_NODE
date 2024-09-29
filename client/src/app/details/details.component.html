@@ -1,12 +1,10 @@
 <div class="container">
-    <div *ngIf="candidate; else loading">
+    <div *ngIf="candidate && candidate.data; else loading">
         <div class="card-header">
-            <!-- Image section with ngIf-else for image availability -->
             <ng-container *ngIf="candidate.data.image_path; else noImage">
                 <img [src]="'http://localhost:3001/' + candidate.data.image_path" 
                      alt="Profile Image" />
             </ng-container>
-            <!-- Template for when the image is not available -->
             <ng-template #noImage>
                 <p>No image available</p>
             </ng-template>
@@ -21,8 +19,6 @@
             <button class="btn btn-primary" (click)="goBack()">Go Back</button>
             <button class="btn btn-primary" [routerLink]="['/edit-details', candidate.data.id]">Edit</button>
             <button class="btn btn-danger" (click)="deleteduser(candidate.data.id)">Delete</button>
-
-
         </div>
     </div>
     <ng-template #loading>
