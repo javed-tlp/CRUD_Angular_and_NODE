@@ -14,7 +14,7 @@ export class UserServiceService {
 
   constructor() { }
 
-  // User Methods
+  // USER METHODS
 
   // Method to handle form data including file uploads for users
   onsubmit(formData: FormData) {
@@ -51,7 +51,7 @@ export class UserServiceService {
     return this.httpclient.post(`${this.userEndpoint}details/${candidateId}`, {});
   }
 
-  // Project Methods
+  // PROJECT METHODS
 
   // Method to get the list of projects
   getProjects() {
@@ -65,6 +65,7 @@ export class UserServiceService {
 
   // Method to create a new project
   createProject(formData: FormData) {
+    // Sending form data including file uploads to the server
     return this.httpclient.post(`${this.projectEndpoint}create`, formData);
   }
 

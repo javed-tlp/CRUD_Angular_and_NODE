@@ -5,6 +5,7 @@ import { GetDetailsComponent } from './get-details/get-details.component';
 import { DetailsComponent } from './details/details.component';
 import { ProjectListComponent } from './projects/project-list/project-list.component';
 import { ProjectsDetailsComponent } from './projects/projects-details/projects-details.component';
+import { AddProjectsComponent } from './projects/add-projects/add-projects.component';
 
 
 
@@ -20,5 +21,7 @@ export const routes: Routes = [
 
     { path: "projects", component: ProjectListComponent},
 
-    { path: "projects-details/:id", component: ProjectsDetailsComponent}
+    { path: "projects-details/:id", component: ProjectsDetailsComponent},
+
+    { path: "add-project", component: AddProjectsComponent}
 ];
