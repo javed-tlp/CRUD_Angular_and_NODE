@@ -1,6 +1,11 @@
 <div class="container">
   <h1 class="text-center">Student List</h1>
 
+  <!-- Add Student Button -->
+  <div class="text-right mb-3">
+    <button class="btn btn-success" [routerLink]="['/add-details']">Add Student</button>
+  </div>
+
   <table class="table table-bordered student-table">
     <thead>
       <tr>
@@ -14,37 +19,43 @@
 
       <!-- Search Inputs Row -->
       <tr class="search-row">
-        <td><input
-          type="text"
-          class="form-control search-input"
-          placeholder="Search by ID..."
-          [(ngModel)]="searchQueryId"
-          (input)="onSearch()"
-        /></td>
-        <td><input
-          type="text"
-          class="form-control search-input"
-          placeholder="Search by Name..."
-          [(ngModel)]="searchQueryName"
-          (input)="onSearch()"
-        /></td>
-        <td><input
-          type="text"
-          class="form-control search-input"
-          placeholder="Search by Email..."
-          [(ngModel)]="searchQueryEmail"
-          (input)="onSearch()"
-        /></td>
+        <td>
+          <input
+            type="text"
+            class="form-control search-input"
+            placeholder="Search by ID..."
+            [(ngModel)]="searchQueryId"
+            (input)="onSearch()"
+          />
+        </td>
+        <td>
+          <input
+            type="text"
+            class="form-control search-input"
+            placeholder="Search by Name..."
+            [(ngModel)]="searchQueryName"
+            (input)="onSearch()"
+          />
+        </td>
+        <td>
+          <input
+            type="text"
+            class="form-control search-input"
+            placeholder="Search by Email..."
+            [(ngModel)]="searchQueryEmail"
+            (input)="onSearch()"
+          />
+        </td>
         <td></td> <!-- Empty cell to align with columns -->
         <td></td> <!-- Empty cell to align with columns -->
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let row of filteredData" (click)="getCandidateDetails(row.id)" style="cursor: pointer;">
-        <th scope="row">{{row.id}}</th>
-        <td>{{row.Name}}</td>
-        <td>{{row.Email}}</td>
-        <td>{{row.Age}}</td>
+        <th scope="row">{{ row.id }}</th>
+        <td>{{ row.Name }}</td>
+        <td>{{ row.Email }}</td>
+        <td>{{ row.Age }}</td>
         <td>
           <a *ngIf="row.image_path" [href]="'http://localhost:3001/' + row.image_path" target="_blank">
             <img loading="lazy" [src]="'http://localhost:3001/' + row.image_path" alt="row Image" style="max-width: 100px; height: auto;" />
