@@ -12,17 +12,22 @@
           <img *ngIf="studentimage" [src]="studentimage" class="img-fluid mb-3" style="width: 150px; height: auto;" />
 
           <!-- Show 'No image' if studentimage is not available -->
-          <p *ngIf="studentimage == null">No image</p>
+          <p *ngIf="!studentimage">No image</p>
         </div>
 
+        <!-- Name input -->
         <div class="form-group">
-          <input class="form-control" [(ngModel)]="studentDetail.Name" name="Name" type="text" placeholder="Name" />
+          <input class="form-control" [(ngModel)]="studentDetail.Name" name="Name" type="text" placeholder="Name" required />
         </div>
+
+        <!-- Email input -->
         <div class="form-group">
-          <input class="form-control" [(ngModel)]="studentDetail.Email" name="Email" type="text" placeholder="Email" />
+          <input class="form-control" [(ngModel)]="studentDetail.Email" name="Email" type="email" placeholder="Email" required />
         </div>
+
+        <!-- Age input -->
         <div class="form-group">
-          <input class="form-control" [(ngModel)]="studentDetail.Age" name="Age" type="text" placeholder="Age" />
+          <input class="form-control" [(ngModel)]="studentDetail.Age" name="Age" type="number" placeholder="Age" required />
         </div>
 
         <!-- File input for updating the image -->
@@ -30,6 +35,7 @@
           <input class="form-control" type="file" (change)="onFileSelected($event)" name="file" />
         </div>
 
+        <!-- Update button -->
         <div>
           <button type="submit" class="btn btn-primary">Update</button>
         </div>

@@ -53,14 +53,16 @@ exports.getDetailsbyid = async (req, res) => {
 
 exports.updateData = async (req, res) => {
   try {
-    const imagePath = req.file ? req.file.path : null;
+    // Check if there's a new file uploaded, otherwise keep the existing image path
+    const imagePath = req.file ? req.file.path.replace(/\\/g, '/') : null;
 
     const userData = {
       id: req.params.id,
       Name: req.body.Name,
       Email: req.body.Email,
       Age: req.body.Age,
-      image_path: imagePath
+      // If there's no new image uploaded, retain the existing image path from the database
+      image_path: imagePath || req.body.existingImage || null
     };
 
     const result = await model.updateDetails(userData);
@@ -70,6 +72,7 @@ exports.updateData = async (req, res) => {
     res.status(500).send({ message: "Data update failed", error: error.message });
   }
 };
+
 
 exports.deleteData = async (req, res) => {
   try {
