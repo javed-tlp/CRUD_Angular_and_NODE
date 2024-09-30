@@ -43,7 +43,6 @@ registeredUser.findByEmail = (email) => {
       });
   };
   
-
 // Update the token for a user
 registeredUser.updateToken = (userId, token) => {
   // Find the user by their ID and update their JWT token

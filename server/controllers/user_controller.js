@@ -33,7 +33,7 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
   try {
     const user = await registeredUserModel.findByEmail(req.body.Email); // Ensure the method exists in your model
-    console.log("User-->",user)
+    console.log("User in login-->",user)
 
     if (!user) {
       return res.status(404).send({ message: "User not found" });
