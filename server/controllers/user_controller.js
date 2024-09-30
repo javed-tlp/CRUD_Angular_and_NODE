@@ -32,15 +32,27 @@ exports.register = async (req, res) => {
 // Login an existing user
 exports.login = async (req, res) => {
   try {
-    const user = await registeredUserModel.findByEmail(req.body.Email); // Ensure the method exists in your model
-    console.log("User in login-->",user)
+    // Log the entire request body to check what is received
+    console.log("Received request body:", req.body);
+
+    // Ensure you're accessing the correct property
+    const email = req.body.email; // Change to lowercase to match the frontend
+    const password = req.body.password;
+
+    // Log the email and password for debugging
+    console.log("Email from request body:", email);
+    console.log("Password from request body:", password);
+
+    // Attempt to find the user by email
+    const user = await registeredUserModel.findByEmail(email);
+    console.log("User found in database:", user);
 
     if (!user) {
       return res.status(404).send({ message: "User not found" });
     }
 
     // Compare the hashed password with the provided password
-    const isMatch = await bcrypt.compare(req.body.password, user.password);
+    const isMatch = await bcrypt.compare(password, user.password);
     
     if (!isMatch) {
       return res.status(400).send({ message: "Invalid password" });
@@ -48,7 +60,7 @@ exports.login = async (req, res) => {
 
     // Create a JWT token
     const token = jwt.sign({ id: user._id }, 'your_jwt_secret', { expiresIn: '1h' });
-    console.log("Token---->>>", token);
+    console.log("Token generated:", token);
 
     // Save the token in the registered user collection
     await registeredUserModel.updateToken(user._id, token); // Ensure this method exists in your model

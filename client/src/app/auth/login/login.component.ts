@@ -3,11 +3,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserServiceService } from '../../services/user-service.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common'; // Import CommonModule for *ngIf
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule], // Add CommonModule here
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -28,6 +29,8 @@ export class LoginComponent {
 
   onSubmit() {
     console.log('Form data before submission:', this.loginForm.value); // Log the form data
+    console.log('Email:', this.loginForm.get('email')?.value); // Log email
+    console.log('Password:', this.loginForm.get('password')?.value); // Log password
 
     // Check if the form is valid
     if (this.loginForm.valid) {
@@ -35,7 +38,7 @@ export class LoginComponent {
         (response) => {
           console.log('Login successful:', response); // Log the successful response
           // Redirect to the desired page after successful login
-          this.router.navigate(['/home']); // Change '/home' to your desired route
+          this.router.navigate(['/register']); // Change '/home' to your desired route
         },
         (error) => {
           console.error('Login failed:', error); // Log the error response
