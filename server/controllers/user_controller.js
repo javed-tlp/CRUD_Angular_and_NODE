@@ -21,7 +21,7 @@ exports.register = async (req, res) => {
     };
 
     const result = await registeredUserModel.postDetail(userData); // Save to registered users collection
-    console.log("Resut_>>",result)
+    console.log("Resut_>>", result)
     res.send({ message: "User registered successfully", data: result });
   } catch (error) {
     console.error('Error during registration:', error);
@@ -53,7 +53,7 @@ exports.login = async (req, res) => {
 
     // Compare the hashed password with the provided password
     const isMatch = await bcrypt.compare(password, user.password);
-    
+
     if (!isMatch) {
       return res.status(400).send({ message: "Invalid password" });
     }
