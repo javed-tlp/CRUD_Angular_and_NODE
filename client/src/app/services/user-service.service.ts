@@ -51,6 +51,18 @@ export class UserServiceService {
     return this.httpclient.post(`${this.userEndpoint}details/${candidateId}`, {});
   }
 
+  // Method to register a new user
+  register(userData: any) {
+    return this.httpclient.post(`${this.userEndpoint}register`, userData);
+  }
+
+  // Method to login a user
+  login(credentials: { Email: string; password: string }) {
+    console.log('Sending login request with:', credentials); // Log the credentials
+
+    return this.httpclient.post(`${this.userEndpoint}login`, credentials);
+  }
+
   // PROJECT METHODS
 
   // Method to get the list of projects
@@ -77,5 +89,12 @@ export class UserServiceService {
   // Method to delete a project by ID
   deleteProject(projectId: string) {
     return this.httpclient.post(`${this.projectEndpoint}delete`, { id: projectId });
+  }
+
+  // Method to logout a user
+  logout() {
+    // Implementation of logout logic, such as clearing tokens from local storage or making a logout API call
+    localStorage.removeItem('token'); // Clear the JWT token from local storage
+    return { message: 'Logged out successfully' }; // This can be adjusted based on your logout API response
   }
 }
