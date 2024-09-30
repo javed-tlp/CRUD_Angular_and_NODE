@@ -8,12 +8,14 @@ import { ProjectsDetailsComponent } from './projects/projects-details/projects-d
 import { AddProjectsComponent } from './projects/add-projects/add-projects.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
+import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 
 
 export const routes: Routes = [
     { path: '', redirectTo: 'register', pathMatch: 'full' }, // Redirect to register on app load
     { path: 'register', component: RegisterComponent }, // Define the registration route
     { path: 'login', component: LoginComponent },
+    { path: 'dashboard', component: DashboardComponent },
     { path: 'add-details', component: AddDetailsComponent },
     { path: "edit-details/:id", component: EditDetailsComponent },
     { path: "get-details", component: GetDetailsComponent },

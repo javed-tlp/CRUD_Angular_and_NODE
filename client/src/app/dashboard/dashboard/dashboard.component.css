@@ -1,0 +1,106 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #eef2f6; /* Light background color */
+  }
+  
+  .dashboard {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full viewport height */
+    padding: 20px;
+  }
+  
+  .dashboard-header {
+    background-color: #007bff; /* Blue background */
+    color: white; /* White text */
+    padding: 20px;
+    border-radius: 8px; /* Rounded corners */
+    text-align: center;
+  }
+  
+  .user-info, .activity-overview, .notifications, .upcoming-tasks {
+    flex: 1; /* Take remaining space */
+    padding: 20px;
+    margin: 10px 0; /* Top and bottom margin */
+    background-color: white; /* White cards */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow */
+  }
+  
+  .info-card {
+    display: flex; /* Flexbox for profile picture and details */
+    align-items: center; /* Center items vertically */
+    padding: 15px;
+    border: 1px solid #ddd; /* Border for info card */
+    border-radius: 8px; /* Rounded corners for info card */
+    background-color: #f9f9f9; /* Slightly darker background for the card */
+  }
+  
+  .profile-picture {
+    border-radius: 50%; /* Circular profile picture */
+    width: 100px; /* Size of profile picture */
+    height: 100px; /* Size of profile picture */
+    margin-right: 20px; /* Space between picture and text */
+    border: 2px solid #007bff; /* Border for profile picture */
+  }
+  
+  .user-details p {
+    margin: 5px 0; /* Margin for user detail paragraphs */
+  }
+  
+  .activity-table {
+    width: 100%;
+    border-collapse: collapse; /* Collapse borders */
+  }
+  
+  .activity-table th, .activity-table td {
+    border: 1px solid #ddd; /* Table border */
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .activity-table th {
+    background-color: #007bff; /* Header background */
+    color: white; /* White text for header */
+  }
+  
+  .status-completed {
+    color: green; /* Color for completed status */
+    font-weight: bold; /* Bold text */
+  }
+  
+  .status-pending {
+    color: orange; /* Color for pending status */
+    font-weight: bold; /* Bold text */
+  }
+  
+  .notification-list, .task-list {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove padding */
+  }
+  
+  .notification-list li, .task-list li {
+    padding: 10px; /* Padding for list items */
+    border-bottom: 1px solid #ddd; /* Separator between items */
+    transition: background-color 0.3s; /* Transition for hover effect */
+  }
+  
+  .notification-list li:hover, .task-list li:hover {
+    background-color: #f1f1f1; /* Light gray background on hover */
+  }
+  
+  .notification-date, .task-date {
+    font-size: 0.8em; /* Smaller font for date */
+    color: gray; /* Gray color for date */
+  }
+  
+  .dashboard-footer {
+    background-color: #007bff; /* Blue background */
+    color: white; /* White text */
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px; /* Rounded corners */
+    margin-top: 20px; /* Space above footer */
+  }
+  

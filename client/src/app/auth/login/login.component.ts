@@ -38,7 +38,7 @@ export class LoginComponent {
         (response) => {
           console.log('Login successful:', response); // Log the successful response
           // Redirect to the desired page after successful login
-          this.router.navigate(['/register']); // Change '/home' to your desired route
+          this.router.navigate(['/dashboard']); // Change '/home' to your desired route
         },
         (error) => {
           console.error('Login failed:', error); // Log the error response

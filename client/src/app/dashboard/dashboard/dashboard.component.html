@@ -1,0 +1,62 @@
+<div class="dashboard">
+    <header class="dashboard-header">
+      <h1>Welcome, {{ user.name }}</h1>
+    </header>
+  
+    <section class="user-info">
+      <h2>User Information</h2>
+      <div class="info-card">
+        <img [src]="user.profilePicture" alt="Profile Picture" class="profile-picture" />
+        <div class="user-details">
+          <p><strong>Email:</strong> {{ user.email }}</p>
+          <p><strong>Role:</strong> {{ user.role }}</p>
+          <p><strong>Last Login:</strong> {{ user.lastLogin }}</p>
+          <p><strong>Phone:</strong> {{ user.phone }}</p>
+          <p><strong>Address:</strong> {{ user.address }}</p>
+        </div>
+      </div>
+    </section>
+  
+    <section class="activity-overview">
+      <h2>Activity Overview</h2>
+      <table class="activity-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let activity of activities">
+            <td>{{ activity.title }}</td>
+            <td>{{ activity.date }}</td>
+            <td><span [ngClass]="{'status-completed': activity.status === 'Completed', 'status-pending': activity.status === 'Pending'}">{{ activity.status }}</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  
+    <section class="notifications">
+      <h2>Notifications</h2>
+      <ul class="notification-list">
+        <li *ngFor="let notification of notifications">
+          {{ notification.message }} <span class="notification-date">{{ notification.date }}</span>
+        </li>
+      </ul>
+    </section>
+  
+    <section class="upcoming-tasks">
+      <h2>Upcoming Tasks</h2>
+      <ul class="task-list">
+        <li *ngFor="let task of upcomingTasks">
+          {{ task.task }} <span class="task-date">Due: {{ task.dueDate }}</span>
+        </li>
+      </ul>
+    </section>
+  
+    <footer class="dashboard-footer">
+      <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+    </footer>
+  </div>
+  
