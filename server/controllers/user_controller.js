@@ -135,7 +135,7 @@ exports.getDatabyid = async (req, res) => {
 // Get user details by ID (Protected)
 exports.getDetailsbyid = async (req, res) => {
   try {
-    const result = await model.getallDetailsbyId(req.params.id); // Get user details by ID
+    const result = await model.getDetailsbyId(req.params.id); // Get user details by ID
     res.send({ message: "Data fetched successfully", data: result });
   } catch (error) {
     console.error('Error fetching data by ID:', error);
