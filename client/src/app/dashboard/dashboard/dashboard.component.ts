@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common'; // Import CommonModule
+import { UserServiceService } from '../../services/user-service.service';
+import { Router } from '@angular/router'; // Change from 'express' to '@angular/router'
 
 @Component({
   selector: 'app-dashboard',
@@ -9,6 +11,11 @@ import { CommonModule } from '@angular/common'; // Import CommonModule
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
+  constructor(
+    private userService: UserServiceService,
+    private router: Router // Update to use Angular Router
+  ) {}
+
   user = {
     name: 'Javed Saifi',
     email: 'saifijaved616@gmail.com',
@@ -36,4 +43,13 @@ export class DashboardComponent {
     { task: 'Prepare presentation for the meeting', dueDate: '2024-10-01' },
     { task: 'Finish the report by the end of the week', dueDate: '2024-10-03' },
   ];
+
+  // Logout method
+  logout() {
+    const resp = this.userService.logout(); // Call the logout method
+    console.log(resp.message); // Log the message
+
+    // Navigate to the login page (update with your actual login route)
+    this.router.navigate(['/login']); // Redirect to the login page
+  }
 }

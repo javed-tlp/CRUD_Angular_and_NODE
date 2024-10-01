@@ -1,6 +1,8 @@
 <div class="dashboard">
     <header class="dashboard-header">
       <h1>Welcome, {{ user.name }}</h1>
+      <button (click)="logout()" class="logout-button">Logout</button> <!-- Add the logout button -->
+
     </header>
   
     <section class="user-info">
