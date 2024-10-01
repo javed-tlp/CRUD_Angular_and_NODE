@@ -1,83 +1,33 @@
-<div class="container">
-    <h1 class="text-center">Add Project</h1>
-  
-    <form (ngSubmit)="onSubmit()" enctype="multipart/form-data">
-      <div class="form-group">
-        <label for="title">Project Title</label>
-        <input
-          type="text"
-          id="title"
-          class="form-control"
-          [(ngModel)]="title"
-          name="title"
-          placeholder="Enter Project Title"
-          required
-        />
-      </div>
-  
-      <div class="form-group">
-        <label for="description">Project Description</label>
-        <textarea
-          id="description"
-          class="form-control"
-          [(ngModel)]="description"
-          name="description"
-          rows="3"
-          placeholder="Enter Project Description"
-          required
-        ></textarea>
-      </div>
-  
-      <div class="form-group">
-        <label for="frontendTech">Frontend Technologies</label>
-        <input
-          type="text"
-          id="frontendTech"
-          class="form-control"
-          [(ngModel)]="frontendTech"
-          name="frontendTech"
-          placeholder="Enter Frontend Technologies"
-        />
-      </div>
-  
-      <div class="form-group">
-        <label for="backendTech">Backend Technologies</label>
-        <input
-          type="text"
-          id="backendTech"
-          class="form-control"
-          [(ngModel)]="backendTech"
-          name="backendTech"
-          placeholder="Enter Backend Technologies"
-        />
-      </div>
-  
-      <div class="form-group">
-        <label for="databaseTech">Database Technologies</label>
-        <input
-          type="text"
-          id="databaseTech"
-          class="form-control"
-          [(ngModel)]="databaseTech"
-          name="databaseTech"
-          placeholder="Enter Database Technologies"
-        />
-      </div>
-  
-      <div class="form-group">
-        <label for="file">Project Image</label>
-        <input
-          type="file"
-          id="file"
-          class="form-control-file"
-          (change)="onFileSelected($event)"
-          accept="image/*"
-        />
-      </div>
-  
-      <div class="text-center mt-3">
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
-    </form>
-  </div>
-  
+<!-- Add Project Page -->
+<div class="container mt-5">
+  <h1 class="text-center">Add Project</h1>
+  <form (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="title">Project Title</label>
+      <input type="text" id="title" class="form-control" [(ngModel)]="title" name="title" placeholder="Enter Project Title" required />
+    </div>
+    <div class="form-group">
+      <label for="description">Project Description</label>
+      <textarea id="description" class="form-control" [(ngModel)]="description" name="description" rows="3" placeholder="Enter Project Description" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="frontendTech">Frontend Technologies</label>
+      <input type="text" id="frontendTech" class="form-control" [(ngModel)]="frontendTech" name="frontendTech" placeholder="Enter Frontend Technologies" />
+    </div>
+    <div class="form-group">
+      <label for="backendTech">Backend Technologies</label>
+      <input type="text" id="backendTech" class="form-control" [(ngModel)]="backendTech" name="backendTech" placeholder="Enter Backend Technologies" />
+    </div>
+    <div class="form-group">
+      <label for="databaseTech">Database Technologies</label>
+      <input type="text" id="databaseTech" class="form-control" [(ngModel)]="databaseTech" name="databaseTech" placeholder="Enter Database Technologies" />
+    </div>
+    <div class="form-group">
+      <label for="file">Project Image</label>
+      <input type="file" id="file" class="form-control-file" (change)="onFileSelected($event)" accept="image/*" />
+    </div>
+    <div class="text-center mt-3">
+      <button type="submit" class="button">Submit</button>
+    </div>
+  </form>
+</div>

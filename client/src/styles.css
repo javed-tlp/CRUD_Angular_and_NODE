@@ -1,298 +1,107 @@
-/* General Styles */
-body {
-    font-family: 'Libre Franklin', sans-serif;
-    background: #f4f4f9;
-    color: #333;
+/* Reset some default styles */
+* {
     margin: 0;
     padding: 0;
-    transition: background 0.5s, color 0.5s;
+    box-sizing: border-box;
 }
 
-/* Dark Mode */
-body.dark-mode {
-    background: #333;
-    color: #f4f4f9;
+/* Body Styles */
+body {
+    font-family: 'Arial', sans-serif; /* Change to your preferred font */
+    line-height: 1.6;
+    background-color: #f4f4f4; /* Light gray background for the body */
+    color: #333; /* Dark text color */
 }
 
-/* Container Styling */
+/* Container for Login Page */
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    background: #fff;
-    border-radius: 8px;
-    transition: background 0.5s;
+    width: 90%;
+    max-width: 600px; /* Adjusted width for login */
+    margin: auto;
+    padding: 30px;
+    background: url('../src/assets/bg1.jpg') no-repeat center center; /* Background image for the container */
+    background-size: cover; /* Cover the container with the image */
+    border-radius: 15px; /* More rounded corners */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Deeper shadow for depth */
+    backdrop-filter: blur(85px); /* Blur effect on the background */
 }
 
-/* Title Styling */
-h1 {
-    font-weight: 900;
-    color: #ff8d00;
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 2.5rem;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-    animation: titleAnimation 0.8s ease-in-out;
-}
-
-/* Welcome Section */
-.welcome-section {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.welcome-section h2 {
-    font-size: 1.8rem;
-    color: #007bff;
-}
-
-.welcome-section p {
-    font-size: 1rem;
-    color: #555;
-}
-
-/* Navbar Styling */
-.navbar {
-    background: #ffffff;
-    border-bottom: 2px solid #ff8d00;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 10px 0;
-    margin-bottom: 20px;
-    transition: background 0.5s, border-color 0.5s;
-}
-
-.container-fluid {
-    display: flex;
-    justify-content: center;
-}
-
-/* Theme Toggle Button */
-.theme-toggle {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.btn-toggle {
-    background: #007bff;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.btn-toggle:hover {
-    background: #0056b3;
-    transform: scale(1.05);
-}
-
-/* Footer Section */
-.footer {
-    text-align: center;
-    padding: 20px;
-    background: #f4f4f9;
-    border-top: 2px solid #ff8d00;
-    margin-top: 20px;
-    transition: background 0.5s, border-color 0.5s;
-}
-
-/* Dark Mode Overrides */
-body.dark-mode .container {
-    background: #444;
-}
-
-body.dark-mode .navbar {
-    background: #222;
-    border-bottom-color: #ff8d00;
-}
-
-body.dark-mode .footer {
-    background: #222;
-    border-top-color: #ff8d00;
-}
-
-body.dark-mode .welcome-section h2,
-body.dark-mode .footer {
-    color: #ff8d00;
-}
-
-/* Add Details Page Form Styles */
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-control {
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 10px;
-    font-size: 16px;
-    transition: background 0.5s, color 0.5s, border-color 0.5s;
-}
-
-/* Dark Mode for Add Details Form */
-body.dark-mode .form-control {
-    background: #555;
-    color: #fff;
-    border-color: #777;
-}
-
-body.dark-mode .form-control::placeholder {
-    color: #ccc;
+/* Heading Styles */
+h2 {
+    margin-bottom: 15px;
+    color: #2c3e50; /* Dark blue color for headings */
+    font-weight: 600; /* Slightly bolder headings */
+    text-align: center; /* Center align headings */
+    text-transform: uppercase; /* Uppercase for headings */
+    letter-spacing: 1px; /* Spacing between letters */
 }
 
 /* Button Styles */
-.btn-primary {
-    background-color: #007bff;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
+.button {
+    display: inline-block;
+    padding: 12px 24px;
     font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
-}
-
-/* Dark Mode for Button */
-body.dark-mode .btn-primary {
-    background-color: #0056b3;
-}
-
-body.dark-mode .btn-primary:hover {
-    background-color: #003d80;
-}
-
-/* Keyframes */
-@keyframes titleAnimation {
-    0% {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Get Details Page Table Styles */
-.table {
-    width: 100%;
-    margin-bottom: 1rem;
-    color: #212529;
-}
-
-.table-bordered {
-    border: 1px solid #dee2e6;
-}
-
-.table th,
-.table td {
-    padding: 0.75rem;
-    vertical-align: top;
-    border-top: 1px solid #dee2e6;
-}
-
-/* Student Table Specific Styles */
-.student-table {
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: background 0.5s, color 0.5s;
-}
-
-.student-table thead th {
-    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #3498db, #2980b9); /* Gradient background */
     color: white;
-}
-
-.student-table .search-row input {
-    padding: 0.5rem;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    transition: background 0.5s, color 0.5s;
-}
-
-/* Button Styles for Get Details Page */
-.btn {
-    margin: 0 5px;
-    border-radius: 4px;
-    padding: 5px 10px;
-    font-size: 14px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: background 0.3s ease, transform 0.2s ease; /* Transition effects */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for buttons */
 }
 
-.btn-primary {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
+.button:hover {
+    background: linear-gradient(135deg, #2980b9, #3498db); /* Reverse gradient on hover */
+    transform: translateY(-2px); /* Slight lift effect on hover */
 }
 
-.btn-danger {
-    background-color: #dc3545;
-    color: #fff;
-    border: none;
+/* Form Styles */
+.form-group {
+    margin-bottom: 20px; /* Space between form groups */
 }
 
-/* Button Hover Effects */
-.btn:hover {
-    transform: scale(1.05);
+/* Attractive Input Fields */
+input, select, textarea {
+    width: 100%;
+    padding: 12px 0; /* Padding only at the top and bottom */
+    margin: 10px 0;
+    border: none; /* No borders */
+    border-bottom: 2px solid #ccc; /* Underline */
+    border-radius: 0; /* No rounded corners */
+    background-color: transparent; /* Transparent background for input fields */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transition for underline color and shadow */
 }
 
-.btn-primary:hover {
-    background-color: #0056b3;
+/* Input Focus Styles */
+input:focus, select:focus, textarea:focus {
+    border-bottom: 2px solid #3498db; /* Change underline color on focus */
+    outline: none; /* Remove default outline */
+    box-shadow: 0 2px 5px rgba(52, 152, 219, 0.5); /* Soft shadow on focus */
 }
 
-.btn-danger:hover {
-    background-color: #c82333;
+/* Placeholder Styles */
+input::placeholder, select::placeholder, textarea::placeholder {
+    color: #aaa; /* Placeholder color */
+    opacity: 0.7; /* Slightly transparent */
 }
 
-/* Dark Mode for Get Details Page */
-body.dark-mode .student-table {
-    background: #444;
-    color: #f4f4f9;
+/* Error Message Styles */
+.text-danger {
+    color: #e74c3c; /* Red color for error messages */
+    font-size: 0.875em; /* Slightly smaller font size */
 }
 
-body.dark-mode .table th,
-body.dark-mode .table td {
-    border-top: 1px solid #777;
-    background-color: #624b4b;
-}
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px; /* Reduce padding on smaller screens */
+    }
 
-body.dark-mode .student-table thead th {
-    background-color: #333;
-    color: #ff8d00;
-}
+    .button {
+        width: 100%; /* Full-width buttons on mobile */
+    }
 
-body.dark-mode .search-row input {
-    background: #555;
-    color: #f4f4f9;
-    border: 1px solid #777;
-}
-
-body.dark-mode .search-row input::placeholder {
-    color: #ccc;
-}
-
-body.dark-mode .btn-primary {
-    background-color: #0056b3;
-}
-
-body.dark-mode .btn-primary:hover {
-    background-color: #003d80;
-}
-
-body.dark-mode .btn-danger {
-    background-color: #c82333;
-}
-
-body.dark-mode .btn-danger:hover {
-    background-color: #a71d2a;
+    h2 {
+        font-size: 1.5rem; /* Adjust heading size for smaller screens */
+    }
 }

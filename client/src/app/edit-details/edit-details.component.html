@@ -1,45 +1,25 @@
+<!-- Edit Details Page -->
 <div class="container mt-5">
-  <div class="row">
-    <div>
-      <h1>Edit Details</h1>
+  <h1 class="text-center">Edit Details</h1>
+  <form (ngSubmit)="onupdate()" class="mt-4" enctype="multipart/form-data">
+    <div class="d-flex justify-content-center align-items-center mb-3">
+      <img *ngIf="studentimage" [src]="studentimage" class="img-fluid" style="width: 150px; height: auto;" />
+      <p *ngIf="!studentimage">No image</p>
     </div>
-    <div class="col-md-6 offset-md-1" id="blocktwo">
-      <form (ngSubmit)="onupdate()" class="mt-4 mt-md-0" enctype="multipart/form-data">
-
-        <!-- Display student image or 'No image' when not available -->
-        <div class="d-flex justify-content-center align-items-center">
-          <!-- Show image if studentimage is available -->
-          <img *ngIf="studentimage" [src]="studentimage" class="img-fluid mb-3" style="width: 150px; height: auto;" />
-
-          <!-- Show 'No image' if studentimage is not available -->
-          <p *ngIf="!studentimage">No image</p>
-        </div>
-
-        <!-- Name input -->
-        <div class="form-group">
-          <input class="form-control" [(ngModel)]="studentDetail.Name" name="Name" type="text" placeholder="Name" required />
-        </div>
-
-        <!-- Email input -->
-        <div class="form-group">
-          <input class="form-control" [(ngModel)]="studentDetail.Email" name="Email" type="email" placeholder="Email" required />
-        </div>
-
-        <!-- Age input -->
-        <div class="form-group">
-          <input class="form-control" [(ngModel)]="studentDetail.Age" name="Age" type="number" placeholder="Age" required />
-        </div>
-
-        <!-- File input for updating the image -->
-        <div class="form-group">
-          <input class="form-control" type="file" (change)="onFileSelected($event)" name="file" />
-        </div>
-
-        <!-- Update button -->
-        <div>
-          <button type="submit" class="btn btn-primary">Update</button>
-        </div>
-      </form>
+    <div class="form-group">
+      <input class="form-control" [(ngModel)]="studentDetail.Name" name="Name" type="text" placeholder="Name" required />
     </div>
-  </div>
+    <div class="form-group">
+      <input class="form-control" [(ngModel)]="studentDetail.Email" name="Email" type="email" placeholder="Email" required />
+    </div>
+    <div class="form-group">
+      <input class="form-control" [(ngModel)]="studentDetail.Age" name="Age" type="number" placeholder="Age" required />
+    </div>
+    <div class="form-group">
+      <input class="form-control" type="file" (change)="onFileSelected($event)" name="file" required />
+    </div>
+    <div class="text-center">
+      <button type="submit" class="button">Update</button>
+    </div>
+  </form>
 </div>
