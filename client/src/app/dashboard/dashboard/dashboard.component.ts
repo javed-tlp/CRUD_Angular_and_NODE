@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common'; // Import CommonModule
 import { UserServiceService } from '../../services/user-service.service';
-import { Router } from '@angular/router'; // Change from 'express' to '@angular/router'
+import { Router, RouterLink } from '@angular/router'; // Change from 'express' to '@angular/router'
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule], // Add CommonModule here
+  imports: [CommonModule, RouterLink], // Add CommonModule here
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
