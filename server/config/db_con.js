@@ -2,10 +2,11 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
 
-const uri = process.env.MONGODB_URI || 'mongodb+srv://saifijaved616:Db_User_PassW0rd@cluster0.y38p8.mongodb.net/crud?retryWrites=true&w=majority&appName=Cluster0';
+// const uri = process.env.MONGODB_URI || 'mongodb+srv://saifijaved616:Db_User_PassW0rd@cluster0.y38p8.mongodb.net/crud?retryWrites=true&w=majority&appName=Cluster0';
+const uri = process.env.MONGODB_URI || 'mongodb+srv://jps_db_username:pJUR2KVLyJMKA7ct@cluster0.y38p8.mongodb.net/jps_db?retryWrites=true&w=majority&appName=Cluster0';
 
 mongoose.connect(uri)
-  // .then(() => console.log('MongoDB connected!'))
+  .then(() => console.log('MongoDB connected!'))
   .catch(err => console.error('MongoDB connection error:', err));
 
 
